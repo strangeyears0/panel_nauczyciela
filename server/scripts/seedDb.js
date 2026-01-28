@@ -76,12 +76,18 @@ const seedDb = async () => {
             date: new Date()
         });
 
-        console.log('✅ Database seeded successfully.');
+        console.log('✅ Database seeded successfully!');
         process.exit(0);
     } catch (error) {
-        console.error('❌ Error seeding database:', error);
+        console.error('❌ Seed failed:', error);
         process.exit(1);
     }
 };
 
-seedDb();
+// Run if called directly
+if (require.main === module) {
+    seedDb();
+}
+
+// Export for use in other scripts
+module.exports = seedDb;
