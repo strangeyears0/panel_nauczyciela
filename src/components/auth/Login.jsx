@@ -97,12 +97,6 @@ export default function Login() {
                             Zaloguj się
                         </button>
                     </form>
-
-                    <div className="text-center text-xs text-gray-500 dark:text-gray-400">
-                        <p>Dane testowe:</p>
-                        <p>Nauczyciel: teacher@example.com / password123</p>
-                        <p>Uczeń: student@example.com / password123</p>
-                    </div>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/auth/Login';
 import AddSubjectPage from './components/teacher/AddSubjectPage';
 import SubjectsPage from './components/teacher/SubjectsPage';
+import SubjectDetailsPage from './components/teacher/SubjectDetailsPage';
 import ClassesGradesPage from './components/teacher/ClassesGradesPage';
 import AddGradesPage from './components/teacher/AddGradesPage';
 import StudentGradesPage from './components/student/StudentGradesPage';
@@ -20,6 +21,7 @@ export default function App() {
           <Route element={<ProtectedRoute allowedTypes={['teacher']} />}>
             <Route path="/teacher/add-subject" element={<AddSubjectPage />} />
             <Route path="/teacher/subjects" element={<SubjectsPage />} />
+            <Route path="/teacher/subjects/:id" element={<SubjectDetailsPage />} />
             <Route path="/teacher/classes" element={<ClassesGradesPage />} />
             <Route path="/teacher/grades" element={<AddGradesPage />} />
           </Route>

@@ -47,7 +47,7 @@ export default function SubjectDetailsPage() {
     const handleAddStudent = async (studentId) => {
         try {
             await subjectsApi.addStudent(id, studentId);
-            await fetchData(); // Refresh list
+            await fetchData();
             setShowModal(false);
             setSearchTerm('');
         } catch (error) {
@@ -60,7 +60,7 @@ export default function SubjectDetailsPage() {
         if (window.confirm('Czy na pewno chcesz usunąć tego ucznia z przedmiotu?')) {
             try {
                 await subjectsApi.removeStudent(id, studentId);
-                await fetchData(); // Refresh list
+                await fetchData();
             } catch (error) {
                 console.error("Failed to remove student", error);
                 alert('Nie udało się usunąć ucznia');
@@ -110,7 +110,6 @@ export default function SubjectDetailsPage() {
                 <Header title={subject.name} />
                 <div className="p-8">
                     <div className="mx-auto max-w-4xl">
-                        {/* Back button */}
                         <button
                             onClick={() => navigate('/teacher/subjects')}
                             className="mb-6 flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
@@ -119,7 +118,6 @@ export default function SubjectDetailsPage() {
                             Wróć do przedmiotów
                         </button>
 
-                        {/* Subject Info */}
                         <div className="mb-8 rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
                             <div className="flex items-start gap-4">
                                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#D0BB95]/10">
@@ -135,7 +133,6 @@ export default function SubjectDetailsPage() {
                             </div>
                         </div>
 
-                        {/* Students Section */}
                         <div className="mb-6 flex items-center justify-between">
                             <h3 className="text-xl font-bold text-gray-900 dark:text-white">Uczniowie</h3>
                             <button
@@ -149,9 +146,7 @@ export default function SubjectDetailsPage() {
 
                         {students.length === 0 ? (
                             <div className="rounded-lg border border-dashed border-gray-300 bg-gray-50 p-8 text-center dark:border-gray-600 dark:bg-gray-800/30">
-                                <span className="material-symbols-outlined mx-auto mb-2 block text-3xl text-gray-400">
-                                    group
-                                </span>
+                                <span className="material-symbols-outlined mx-auto mb-2 block text-3xl text-gray-400">group</span>
                                 <p className="text-sm text-gray-600 dark:text-gray-400">
                                     Brak uczniów w tym przedmiocie. Kliknij "Dodaj ucznia" aby przypisać uczniów.
                                 </p>
@@ -161,29 +156,17 @@ export default function SubjectDetailsPage() {
                                 <table className="w-full">
                                     <thead className="bg-gray-50 dark:bg-gray-800">
                                         <tr>
-                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                                                Uczeń
-                                            </th>
-                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                                                Email
-                                            </th>
-                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">
-                                                Klasa
-                                            </th>
-                                            <th className="px-6 py-3.5 text-right text-sm font-semibold text-gray-900 dark:text-white">
-                                                Akcje
-                                            </th>
+                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Uczeń</th>
+                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Email</th>
+                                            <th className="px-6 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white">Klasa</th>
+                                            <th className="px-6 py-3.5 text-right text-sm font-semibold text-gray-900 dark:text-white">Akcje</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                                         {students.map((student) => (
                                             <tr key={student.id} className="hover:bg-gray-50 dark:hover:bg-gray-700">
-                                                <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
-                                                    {student.name}
-                                                </td>
-                                                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
-                                                    {student.email}
-                                                </td>
+                                                <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">{student.name}</td>
+                                                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{student.email}</td>
                                                 <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">
                                                     {student.classes && student.classes.map(c => c.name).join(', ')}
                                                 </td>
@@ -205,7 +188,6 @@ export default function SubjectDetailsPage() {
                 </div>
             </main>
 
-            {/* Add Student Modal */}
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
                     <div className="w-full max-w-2xl rounded-lg bg-white p-6 dark:bg-gray-800">

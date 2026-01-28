@@ -1,10 +1,12 @@
 // src/components/teacher/SubjectsPage.jsx
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../shared/Header';
 import TeacherSidebar from '../shared/TeacherSidebar';
 import { subjectsApi } from '../../api/subjects';
 
 export default function SubjectsPage() {
+    const navigate = useNavigate();
     const [subjects, setSubjects] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -109,7 +111,10 @@ export default function SubjectsPage() {
 
                                         {/* Akcje */}
                                         <div className="mt-4 flex gap-2">
-                                            <button className="flex-1 rounded-lg bg-[#D0BB95]/10 px-3 py-2 text-sm font-medium text-[#D0BB95] hover:bg-[#D0BB95]/20 transition-colors">
+                                            <button
+                                                onClick={() => navigate(`/teacher/subjects/${subject.id}`)}
+                                                className="flex-1 rounded-lg bg-[#D0BB95]/10 px-3 py-2 text-sm font-medium text-[#D0BB95] hover:bg-[#D0BB95]/20 transition-colors"
+                                            >
                                                 Szczegóły
                                             </button>
                                         </div>
